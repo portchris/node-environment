@@ -1,0 +1,6 @@
+/data
+/env/nginx/frontend/sites-enabled/*
+/env/.env
+*.sql
+*.tar.gz
+*.zip
