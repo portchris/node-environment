@@ -1,0 +1,11 @@
+server {
+	listen 80;
+	server_name plato.localhost;
+	set $ROOT /home/www/projects/nodejs/plato.fm/src;
+	root $MAGE_ROOT;
+	index index.js;
+	location / {
+	    try_files $uri $uri/ /index.js$is_args$args;
+	}
+	# include /etc/nginx/defaults/nodejs.conf;
+}

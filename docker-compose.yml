@@ -1,25 +1,47 @@
-version: “3.1”
+version: "3.1"
+
+networks:
+  nodedev:
 
 services:
   nodejs:
     build: ./env/nodejs
     container_name: nodejs
-    env_file: config/.env
+    networks: 
+      - nodedev
+    env_file: env/.env
     environment:
       - NODE_ENV=production
+    volumes:
+      - ./src:/var/www/src:delegated
+      - ./env:/var/env:delegated
     ports:
       - 8088:8088
 
-  db:
+  postgres:
     build: ./env/postgres
     container_name: postgres
-    env_file: config/.env
+    networks: 
+      - nodedev
+    env_file: env/.env
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
       - ./data/postgres:/docker-entrypoint-initdb.d
     ports:
       - 5432:5432
 
-volumes:
-  postgres:
-    driver: local
+  nginx:
+    build: ./env/nginx
+    container_name: nginx
+    networks: 
+      - nodedev
+    env_file: env/.env
+    volumes:
+      - ./data/nginx/logs:/var/log/nginx
+      - ./env/nginx/frontend/upstream/all.conf:/etc/nginx/conf.d/00_upstream.conf
+      - ./env/nginx/frontend/sites-available:/etc/nginx/sites-available
+      - ./env/nginx/frontend/sites-enabled:/etc/nginx/sites-enabled
+    depends_on:
+      - nodejs
+    ports:
+      - 80:80
