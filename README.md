@@ -1,27 +1,14 @@
-# Local Development Environment
+# LENNS Environment
 
-This repository provides a development environment for use with Magento 1.x and Magento 2.x projects.
+Linux Express.Js Node.Js Nginx PostgreSQL Stack
 
-The following containers will run on your local when the default environment is up:
+The following containers will run when the default environment is up:
 
 App | Container Name | Ports
 --- | --- | ---
 nginx | nginx | 80
-MySQL | mysql | 3306
-redis | 6379 | 6379
-Adminer | adminer | 8080
-PHP 7.0 | php70 | n/a
-PHP 7.1 | php70 | n/a
-PHP 5.6 | php70 | n/a
-
-There are other environments available for specific use cases which may also run the below containers:
-
-App | Container Name | Ports
---- | --- | ---
-PHP 7.2 | php72 | n/a
-postgres | postgres | 5432
-elasticsearch | elasticsearch | n/a
-rabbitmq 3.6 | rabbitmq | 15672
+PostgreSQL | postgres | 5432
+Node.Js | adminer | 8080
 
 ## Setup
 
