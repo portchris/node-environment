@@ -1,4 +1,18 @@
-FROM node:10-alpine
+FROM alpine:3.7
+
+# Build arguments
+ARG UID=1000
+ARG GID=1000
+
+# Install the basic useful packages
+RUN apk --update add bash wget dpkg-dev
+
+# Add the www user
+RUN addgroup -g $GID www && \
+    adduser -D -u $UID -G www -s /bin/bash www
+
+# Download Node.Js and NPM
+RUN apk add --update --no-cache nodejs nodejs-npm  
 
 # Create app directory
 # WORKDIR /var/www/src
@@ -15,5 +29,5 @@ FROM node:10-alpine
 # Bundle app source
 # COPY ./../../src /var/www/
 
-# EXPOSE 8080
+EXPOSE 80 443
 # CMD [ "npm", "start" ]

@@ -13,6 +13,7 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
+      - ~/projects:/home/www/projects
       - ./src:/var/www/src:delegated
       - ./env:/var/env:delegated
     ports:
@@ -37,6 +38,7 @@ services:
       - nodedev
     env_file: env/.env
     volumes:
+      - ~/projects:/home/www/projects
       - ./data/nginx/logs:/var/log/nginx
       - ./env/nginx/frontend/upstream/all.conf:/etc/nginx/conf.d/00_upstream.conf
       - ./env/nginx/frontend/sites-available:/etc/nginx/sites-available
