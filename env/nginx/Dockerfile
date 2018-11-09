@@ -11,4 +11,4 @@ RUN apk --update add bash wget dpkg-dev
 RUN addgroup -g $GID www && \
     adduser -D -u $UID -G www -s /bin/bash www
 
-EXPOSE 8088
+EXPOSE 80 443

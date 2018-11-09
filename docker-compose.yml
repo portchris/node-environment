@@ -13,11 +13,12 @@ services:
     environment:
       - PORT=80
       - NODE_ENV=production
-    restart: always
+    # restart: always
     volumes:
       - ~/projects:/home/www/projects
       - ./src:/var/www/src:delegated
       - ./env:/var/env:delegated
+    tty: true
 
   postgres:
     build: ./env/postgres
