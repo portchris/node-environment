@@ -16,6 +16,8 @@ Then run the ```./start.sh``` or ```.\start.ps1``` script to bring up the contai
 
 ### Environment
 
+You must creat an environment file "./env/.env" - this file will be used as the central location for credentials for our containers such the database username and password.
+
 The environment requires projects to be placed in the following folders:
 
 * ```~/projects/environment``` - The location of this repository
