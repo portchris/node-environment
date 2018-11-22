@@ -29,5 +29,5 @@ RUN apk add --update --no-cache nodejs nodejs-npm
 # Bundle app source
 # COPY ./../../src /var/www/
 
-EXPOSE 80 443
+EXPOSE 80 443 3000
 # CMD [ "npm", "start" ]
