@@ -19,6 +19,8 @@ services:
       - ./src:/var/www/src:delegated
       - ./env:/var/env:delegated
     tty: true
+    ports:
+      - 3000:3000
 
   postgres:
     build: ./env/postgres
@@ -49,4 +51,3 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 3000:3000
