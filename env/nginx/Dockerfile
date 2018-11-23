@@ -5,7 +5,7 @@ ARG UID=1000
 ARG GID=1000
 
 # Install the basic useful packages
-RUN apk --update add bash wget dpkg-dev
+RUN apk --update add bash wget dpkg-dev vim
 
 # Add the www user
 RUN addgroup -g $GID www && \

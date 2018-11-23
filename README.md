@@ -8,20 +8,30 @@ App | Container Name | Ports
 --- | --- | ---
 Nginx | nginx | 80
 PostgreSQL | postgres | 5432
-Node.Js | adminer | 8080
+Node.Js | adminer | 80/3000
 
 ## Setup
-Run the handy ```./build.sh``` or ```.\build.ps1``` script to download and build all required Docker images.
-Then run the ```./start.sh``` or ```.\start.ps1``` script to bring up the containers.
+First, create the following environment configuration files:
+```
+env/nginx/.env
+env/nodejs/.env
+env/postgres/.env
+```
+
+Next, create the ```src``` directory where our projects will be placed:
+```
+mkdir src
+```
+
+Next, run the handy ```./build.sh``` or ```.\build.ps1``` script to download and build all required Docker images.
+
+Finally, run the ```./start.sh``` or ```.\start.ps1``` script to bring up the containers.
 
 ### Environment
 
-You must creat an environment file "./env/.env" - this file will be used as the central location for credentials for our containers such the database username and password.
+You must create the environment files ```env/nginx/.env, env/nodejs/.env & env/postgres/.env``` - this file will be used as the central location for credentials for our containers such the database username and password.
 
-The environment requires projects to be placed in the following folders:
-
-* ```~/projects/environment``` - The location of this repository
-* ```~/projects``` - Location of all your projects
+The environment requires projects to be placed in the ```src``` folder as this is where Docker mounts it's volumes.
 
 There is a bash aliases file ```./bash_aliases``` which should be included in your ```~/.bashrc``` file which provides useful aliases to work within this environment.
 
